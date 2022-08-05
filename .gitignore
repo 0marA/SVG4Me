@@ -1,2 +1,6 @@
 SVGs
 .DS_Store
+target
+.vscode
+.settings
+.DS_Store
