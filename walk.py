@@ -12,5 +12,3 @@ for root, dirs, files in os.walk(".", topdown=False):
             os.remove(os.path.join(root, name))
         if name.endswith(".svg"):
             print("SVG: " + os.path.join(root, name))
-            
-        
