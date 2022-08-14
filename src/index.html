@@ -3,15 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>SVG4Me!</title>
   </head>
   <body>
-    <h1>SVG4Me</h1>
-    <img src="/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs/friends.svg" alt="Kiwi standing on oval">
-
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
+    <button type="button" id="btn">Open a File</button>
+    File path: <strong id="filePath"></strong>
+    <script src='./renderer.js'></script>
   </body>
 </html>
