@@ -2,7 +2,7 @@ const walk = require("walkdir");
 const fs = require("fs");
 const unzipper = require("unzipper");
 
-async function findSVGs(path) {
+async function walkFunc(path) {
     walk(path, async function (path, stat) {
         if (path.endsWith(".zip")) {
             let newFolder = path.slice(0, -3); // Remove.zip
@@ -23,12 +23,15 @@ async function findSVGs(path) {
     });
 }
 
-// sleep time expects milliseconds
-function sleep(time) {
+
+function sleep(time) { // sleep time expects milliseconds
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 findSVGs("/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs");
-sleep(500).then(() => {
-    findSVGs("/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs");
-});
+async function findSVGs(path) {
+    await walkFunc(path);
+    sleep(500).then(() => { // We need to sleep for half a second to wait for the unzipping
+        walkFunc(path);
+    });
+}
