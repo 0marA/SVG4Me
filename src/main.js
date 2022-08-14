@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
+const { findSVGs } = require("./walk.js");
+let mainFolderPath;
 
 async function handleFolderOpen() {
     const { canceled, filePaths } = await dialog.showOpenDialog({
@@ -8,8 +10,13 @@ async function handleFolderOpen() {
     if (canceled) {
         return;
     } else {
+        getSVGs(filePaths[0]);
         return filePaths[0];
     }
+}
+
+function getSVGs(path) {
+    findSVGs(path)
 }
 
 function createWindow() {
