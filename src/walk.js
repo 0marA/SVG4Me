@@ -18,9 +18,17 @@ async function findSVGs(path) {
                     }
                 });
             }
-        } 
+        }
         if (path.endsWith(".svg")) console.log("found: ", path);
     });
 }
 
+// sleep time expects milliseconds
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 findSVGs("/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs");
+sleep(500).then(() => {
+    findSVGs("/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs");
+});
