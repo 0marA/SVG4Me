@@ -1,6 +1,7 @@
 const walk = require("walkdir");
 const fs = require("fs");
 const unzipper = require("unzipper");
+let SVGPaths = "";
 
 async function walkFunc(path) {
     walk(path, async function (path, stat) {
@@ -19,21 +20,28 @@ async function walkFunc(path) {
                 });
             }
         }
-        if (path.endsWith(".svg")) console.log("found: ", path);
+        if (path.endsWith(".svg")) {
+            SVGPaths += path;
+            //console.log("Walks: " + SVGPaths);
+        }
     });
 }
 
-
-function sleep(time) { // sleep time expects milliseconds
+function sleep(time) {
+    // sleep time expects milliseconds
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-//findSVGs("/Users/omarafzal/Desktop/Programming/SVG4Me/SVGs");
 async function findSVGs(path) {
     await walkFunc(path);
-    sleep(500).then(() => { // We need to sleep for half a second to wait for the unzipping
+    sleep(500).then(() => {
+        // We need to sleep for half a second to wait for the unzipping
         walkFunc(path);
     });
 }
 
-module.exports = {findSVGs};
+function getWalkSVGPaths() {
+    return SVGPaths;
+}
+
+module.exports = { findSVGs, getWalkSVGPaths };

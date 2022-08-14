@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>SVG4Me!</title>
-  </head>
-  <body>
-    <button type="button" id="open-folder">Open a Folder</button>
-    Folder Path: <strong id="folderpath"></strong>
-    <script src='./renderer.js'></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <title>SVG4Me!</title>
+    </head>
+    <body>
+        <h1>
+            Click the open folder button to get started. Press Ctrl + R to open
+            a new folder
+        </h1>
+        <button type="button" id="open-folder">Open a Folder</button>
+        <h2 id="folderpath">Folder Path:</h2>
+        <h2 id="SVGPaths">SVG Paths:</h2>
+        <script src="./renderer.js"></script>
+        <script src="./walk.js"></script>
+    </body>
 </html>
