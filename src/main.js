@@ -16,16 +16,12 @@ async function handleFolderOpen() {
 }
 
 function sleep(time) {
-    // sleep time expects milliseconds
-    return new Promise((resolve) => setTimeout(resolve, time));
+    return new Promise((resolve) => setTimeout(resolve, time));   // sleep time expects milliseconds
 }
 
 async function getSVGPaths() {
-    await sleep(500).then(() => {
-        // We need to sleep for half a second to wait for the unzipping
-    });
+    await sleep(500).then(() => {}); // We need to sleep for half a second to wait for the unzipping
     return getWalkSVGPaths();
-    //return SVGPaths;
 }
 
 function createWindow() {

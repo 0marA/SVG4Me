@@ -1,7 +1,7 @@
 const walk = require("walkdir");
 const fs = require("fs");
 const unzipper = require("unzipper");
-let SVGPaths = "";
+let SVGPaths = [];
 
 async function walkFunc(path) {
     walk(path, async function (path, stat) {
@@ -21,8 +21,7 @@ async function walkFunc(path) {
             }
         }
         if (path.endsWith(".svg")) {
-            SVGPaths += path;
-            //console.log("Walks: " + SVGPaths);
+            SVGPaths.push(path);
         }
     });
 }

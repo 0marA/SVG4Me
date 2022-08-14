@@ -2,17 +2,20 @@ const btn = document.getElementById("open-folder");
 const folderPathElement = document.getElementById("folderpath");
 const SVGPathElement = document.getElementById("SVGPaths");
 
-let mainFolderPath
-mainFolderPath = localStorage.getItem("mainFolderPath");
-// The root directory of the SVG files
-let renSVGPaths;
+let mainFolderPath; // The root directory of the SVG files
+let SVGPaths;
 btn.addEventListener("click", async () => {
     mainFolderPath = await window.electronAPI.openFolder();
-    localStorage.setItem("mainFolderPath", mainFolderPath);
     folderPathElement.innerText += mainFolderPath;
-    renSVGPaths = await window.electronAPI.getSVGPaths();
-    // console.log("SVGPaths" + renSVGPaths);
-    SVGPathElement.innerText += renSVGPaths;
+    SVGPaths = await window.electronAPI.getSVGPaths();
+    SVGPathElement.innerText = SVGPaths;
+
+    for (let i = 0; i < SVGPaths.length; i++) {
+        console.log("Created an image");
+        let img = document.createElement("img");
+        img.src = SVGPaths[i];
+        document.getElementById("body").appendChild(img);
+    }
 });
 
 module.exports = mainFolderPath;
