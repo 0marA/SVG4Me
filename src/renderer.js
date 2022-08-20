@@ -8,7 +8,6 @@ btn.addEventListener("click", async () => {
     mainFolderPath = await window.electronAPI.openFolder();
     folderPathElement.innerText += mainFolderPath;
     SVGPaths = await window.electronAPI.getSVGPaths();
-    //SVGPathElement.innerText = SVGPaths;
 
     for (let i = 0; i < SVGPaths.length; i++) {
         let img = document.createElement("img");
@@ -17,6 +16,8 @@ btn.addEventListener("click", async () => {
         img.width = 200;
         img.height = 200;
         path.innerText = SVGPaths[i];
+        img.style.position = "relative";
+        img.style.left = "50px";
         document.getElementById("body").appendChild(img);
         document.getElementById("body").appendChild(path);
     }

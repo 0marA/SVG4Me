@@ -16,7 +16,7 @@ async function handleFolderOpen() {
 }
 
 function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));   // sleep time expects milliseconds
+    return new Promise((resolve) => setTimeout(resolve, time)); // sleep time expects milliseconds
 }
 
 async function getSVGPaths() {
@@ -31,6 +31,7 @@ function createWindow() {
         },
     });
     mainWindow.loadFile("index.html");
+    mainWindow.setBackgroundColor("#eed5d9");
 }
 
 app.whenReady().then(() => {
