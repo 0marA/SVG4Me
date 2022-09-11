@@ -1,22 +1,62 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "^20.0.1"
-  }
+    "name": "SVG4Me",
+    "version": "1.0.0",
+    "description": "A GUI to display all of the SVGs in a users system. Built with ❤️ for my mom",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "dist:windows": "electron-builder --windows",
+        "build": "build",
+        "package": "electron-forge package",
+        "make": "electron-forge make"
+    },
+    "author": "0marA",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.65",
+        "@electron-forge/maker-deb": "^6.0.0-beta.65",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.65",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
+        "@electron-forge/maker-zip": "^6.0.0-beta.65",
+        "electron": "^20.0.1",
+        "electron-builder": "^23.3.3",
+        "electron-rebuild": "^3.2.9"
+    },
+    "dependencies": {
+        "electron-squirrel-startup": "^1.0.0",
+        "unzipper": "^0.10.11",
+        "walkdir": "^0.4.1"
+    },
+    "build": {
+        "win": {
+            "target": "nsis"
+        }
+    },
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "electron_quick_start"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
+    }
 }

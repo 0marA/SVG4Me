@@ -1,7 +1,19 @@
 {
-  "dependencies": {
-    "unzip": "^0.1.11",
-    "unzipper": "^0.10.11",
-    "walkdir": "^0.4.1"
-  }
+    "dependencies": {
+        "unzip": "^0.1.11",
+        "unzipper": "^0.10.11",
+        "walkdir": "^0.4.1"
+    },
+    "devDependencies": {
+        "electron-builder": "^23.3.3"
+    },
+    "build": {
+        "win": {
+            "target": "nsis"
+        }
+    },
+    "scripts": {
+        "start": "electron .",
+        "dist": "build"
+    }
 }

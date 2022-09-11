@@ -1,10 +1,11 @@
-const btn = document.getElementById("open-folder");
+const openFolderButton = document.getElementById("open-folder");
+const refreshButton = document.getElementById("refresh-page");
 const folderPathElement = document.getElementById("folderpath");
 const SVGPathElement = document.getElementById("SVGPaths");
 
 let mainFolderPath; // The root directory of the SVG files
 let SVGPaths;
-btn.addEventListener("click", async () => {
+openFolderButton.addEventListener("click", async () => {
     mainFolderPath = await window.electronAPI.openFolder();
     folderPathElement.innerText += mainFolderPath;
     SVGPaths = await window.electronAPI.getSVGPaths();
@@ -21,6 +22,10 @@ btn.addEventListener("click", async () => {
         document.getElementById("body").appendChild(img);
         document.getElementById("body").appendChild(path);
     }
+});
+
+refreshButton.addEventListener("click", async () => {
+    window.location.reload();
 });
 
 module.exports = mainFolderPath;
