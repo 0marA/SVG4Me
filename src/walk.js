@@ -12,12 +12,6 @@ async function walkFunc(path) {
                 await fs
                     .createReadStream(path)
                     .pipe(unzipper.Extract({ path: newFolder }));
-                fs.unlink(path, (err) => {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
-                });
             }
         }
         if (path.endsWith(".svg")) {
