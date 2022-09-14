@@ -6,7 +6,7 @@ let SVGPaths = [];
 async function walkFunc(path) {
     walk(path, async function (path, stat) {
         if (path.endsWith(".zip")) {
-            let newFolder = path.slice(0, -3); // Remove.zip
+            let newFolder = path.slice(0, -4); // Remove.zip
             if (!fs.existsSync(newFolder)) {
                 fs.mkdirSync(newFolder);
                 await fs

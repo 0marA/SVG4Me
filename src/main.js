@@ -19,7 +19,8 @@ function sleep(time) {
 }
 
 async function getSVGPaths() {
-    await sleep(500).then(() => {}); // We need to sleep for half a second to wait for the unzipping
+    // We need to sleep for half a second to wait for the unzipping
+    await sleep(500).then(() => {});
     return getWalkSVGPaths();
 }
 
