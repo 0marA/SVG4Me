@@ -12,9 +12,9 @@ async function walkFunc(path) {
             let newFolder = path.slice(0, -4); // Remove.zip
             if (!fs.existsSync(newFolder)) {
                 fs.mkdirSync(newFolder);
-                fs
-                    .createReadStream(path)
-                    .pipe(unzipper.Extract({ path: newFolder }));
+                fs.createReadStream(path).pipe(
+                    unzipper.Extract({ path: newFolder })
+                );
                 await walkFunc(newFolder);
             }
         }
@@ -30,20 +30,13 @@ function sleep(time) {
 }
 
 async function findSVGs(path) {
+    SVGPaths = [];
     await walkFunc(path);
-    sleep(500).then(() => {
+    sleep(1000).then(() => {
         // We need to sleep for half a second to wait for the unzipping
         walkFunc(path);
     });
 }
-
-findSVGs("../SVGs");
-sleep(1000).then(() => {
-    // We need to sleep for half a second to wait for the unzipping
-    console.log(SVGPaths);
-});
-
-
 
 function getWalkSVGPaths() {
     return SVGPaths;

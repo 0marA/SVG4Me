@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const { findSVGs } = require("./walk.js");
 const { getWalkSVGPaths } = require("./walk.js");
+
 async function handleFolderOpen() {
     const { canceled, filePaths } = await dialog.showOpenDialog({
         properties: ["openDirectory"],
@@ -20,7 +21,7 @@ function sleep(time) {
 
 async function getSVGPaths() {
     // We need to sleep for half a second to wait for the unzipping
-    await sleep(500).then(() => {});
+    await sleep(1000).then(() => {});
     return getWalkSVGPaths();
 }
 
