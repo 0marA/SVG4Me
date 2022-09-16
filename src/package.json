@@ -1,6 +1,6 @@
 {
-    "name": "SVG4Me",
-    "version": "1.0.0",
+    "name": "SVG4Me!",
+    "version": "1.0.3",
     "description": "A GUI to display all of the SVGs in a users system. Built with ❤️ for my mom",
     "main": "main.js",
     "scripts": {
