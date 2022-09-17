@@ -18,7 +18,7 @@ async function walkFunc(path) {
                 await walkFunc(newFolder);
             }
         }
-        if (path.endsWith(".svg")) {
+        if (path.endsWith(".svg") && !SVGPaths.includes(path)) {
             SVGPaths.push(path);
         }
     });
@@ -33,9 +33,10 @@ async function findSVGs(path) {
     SVGPaths = [];
     await walkFunc(path);
     await sleep(1000).then(() => {
-        // We need to sleep for half a second to wait for the unzipping
+        // We need to sleep for a second to wait for the unzipping
         walkFunc(path);
     });
+    //console.log(SVGPaths);
 }
 
 function getWalkSVGPaths() {
