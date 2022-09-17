@@ -32,7 +32,7 @@ function sleep(time) {
 async function findSVGs(path) {
     SVGPaths = [];
     await walkFunc(path);
-    sleep(1000).then(() => {
+    await sleep(1000).then(() => {
         // We need to sleep for half a second to wait for the unzipping
         walkFunc(path);
     });

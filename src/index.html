@@ -6,14 +6,22 @@
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; script-src 'self'"
         />
+        <link rel="stylesheet" href="./styles.css" />
         <title>SVG4Me!</title>
     </head>
     <body id="body">
-        <h1>Click the open folder button to get started with SVG4Me!</h1>
-        <button type="button" id="open-folder" class="buttons">Open a Folder</button>
+        <div id="dropzone">
+        <h1 id="title">
+            Click the open folder button to get started with SVG4Me!
+        </h1>
+        <button type="button" id="open-folder" class="buttons">
+            Open a Folder
+        </button>
         <button type="button" id="refresh-page">Refresh</button>
         <h2 id="folderpath">Folder Path:</h2>
         <h2 id="SVGPaths">SVG Paths:</h2>
+        </div>
+
         <script src="./renderer.js"></script>
         <script src="./walk.js"></script>
     </body>

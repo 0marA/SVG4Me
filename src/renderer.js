@@ -2,11 +2,38 @@ const openFolderButton = document.getElementById("open-folder");
 const refreshButton = document.getElementById("refresh-page");
 const folderPathElement = document.getElementById("folderpath");
 const SVGPathElement = document.getElementById("SVGPaths");
+const dropZone = document.getElementById("dropzone");
 
 let mainFolderPath; // The root directory of the SVG files
 let SVGPaths;
 openFolderButton.addEventListener("click", async () => {
     mainFolderPath = await window.electronAPI.openFolder();
+    updateHTML();
+});
+
+refreshButton.addEventListener("click", async () => {
+    window.location.reload();
+});
+
+dropZone.addEventListener("dragover", async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+});
+
+dropZone.addEventListener("drop", async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const files = e.dataTransfer.files;
+    for (const file of files) {
+        mainFolderPath = file.path;
+    }
+    //console.log(String(mainFolderPath));
+    await window.electronAPI.findSVGsDrag([mainFolderPath]);
+    //updateHTML();
+});
+
+async function updateHTML() {
     folderPathElement.innerText += mainFolderPath;
     SVGPaths = await window.electronAPI.getSVGPaths();
 
@@ -22,10 +49,6 @@ openFolderButton.addEventListener("click", async () => {
         document.getElementById("body").appendChild(img);
         document.getElementById("body").appendChild(path);
     }
-});
-
-refreshButton.addEventListener("click", async () => {
-    window.location.reload();
-});
+}
 
 module.exports = mainFolderPath;
