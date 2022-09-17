@@ -28,9 +28,8 @@ dropZone.addEventListener("drop", async (e) => {
     for (const file of files) {
         mainFolderPath = file.path;
     }
-    //console.log(String(mainFolderPath));
-    await window.electronAPI.findSVGsDrag([mainFolderPath]);
-    //updateHTML();
+    await window.electronAPI.findSVGsDrag(mainFolderPath);
+    updateHTML();
 });
 
 async function updateHTML() {

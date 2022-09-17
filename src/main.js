@@ -6,8 +6,8 @@ const { getWalkSVGPaths } = require("./walk.js");
 app.whenReady().then(() => {
     ipcMain.handle("dialog:openFolder", handleFolderOpen);
     ipcMain.handle("dialog:getSVGPaths", getSVGPaths);
-    ipcMain.on("dialog:findSVGsDrag", (event, arg) => {
-        console.log(arg);
+    ipcMain.on("dialog:findSVGsDrag", async (event, arg) => {
+        await findSVGs(arg);
     });
     createWindow();
     app.on("activate", function () {
@@ -39,11 +39,6 @@ async function handleFolderOpen() {
         findSVGs(filePaths[0]);
         return filePaths[0];
     }
-}
-
-async function findSVGsDrag(thePath) {
-    //console.log(path)
-    await findSVGs(thePath);
 }
 
 function sleep(time) {
