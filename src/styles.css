@@ -6,3 +6,55 @@ body {
 .dropzone {
     height: 95%;
 }
+
+
+.buttons {
+    background-color: #ffe7e7;
+    background-position: 0 0;
+    border: 1px solid #fee0e0;
+    border-radius: 11px;
+    box-sizing: border-box;
+    color: #7257ac;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 33.4929px;
+    list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg)
+        none;
+    padding: 2px 12px;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-underline-offset: 1px;
+    transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    word-break: break-word;
+}
+
+.buttons:active,
+.buttons:hover,
+.buttons:focus {
+    outline: 0;
+}
+
+.buttons:active {
+    background-color: #af9cd8;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #ffffff;
+}
+
+.buttons:hover {
+    background-color: #af9cd8;
+    border-color: #7257ac;
+}
+
+.buttons:active:hover,
+.buttons:focus:hover,
+.buttons:focus {
+    background-color: #af9cd8;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #ffffff;
+}

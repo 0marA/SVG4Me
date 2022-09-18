@@ -1,10 +1,10 @@
 const openFolderButton = document.getElementById("open-folder");
 const refreshButton = document.getElementById("refresh-page");
 const folderPathElement = document.getElementById("folderpath");
-const SVGPathElement = document.getElementById("SVGPaths");
 const dropZone = document.getElementById("dropzone");
+const SVGsElement = document.getElementById("SVGs");
 
-let mainFolderPath; // The root directory of the SVG files
+let mainFolderPath = ""; // The root directory of the SVG files
 let SVGPaths;
 openFolderButton.addEventListener("click", async () => {
     mainFolderPath = await window.electronAPI.openFolder();
@@ -24,15 +24,21 @@ dropZone.addEventListener("drop", async (e) => {
     e.stopPropagation();
     e.preventDefault();
 
+    if (mainFolderPath !== "") {
+    }
     const files = e.dataTransfer.files;
     for (const file of files) mainFolderPath = file.path;
-    
+
     await window.electronAPI.findSVGsDrag(mainFolderPath);
     updateHTML();
 });
 
 async function updateHTML() {
-    folderPathElement.innerText += mainFolderPath;
+    SVGsElement.innerHTML = "";
+
+    folderPathElement.innerText = "Searching in: " + mainFolderPath;
+    SVGsElement.appendChild(folderPathElement);
+
     SVGPaths = await window.electronAPI.getSVGPaths();
 
     for (let i = 0; i < SVGPaths.length; i++) {
@@ -43,9 +49,9 @@ async function updateHTML() {
         img.height = 200;
         path.innerText = SVGPaths[i];
         img.style.position = "relative";
-        img.style.left = "50px";
-        document.getElementById("body").appendChild(img);
-        document.getElementById("body").appendChild(path);
+        img.style.left = "100px";
+        SVGsElement.appendChild(img);
+        SVGsElement.appendChild(path);
     }
 }
 
