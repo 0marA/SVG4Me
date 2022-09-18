@@ -16,6 +16,8 @@ async function walkFunc(path) {
                     unzipper.Extract({ path: newFolder })
                 );
                 await walkFunc(newFolder);
+            } else {
+                await walkFunc(newFolder); // If you pass in a zip thats already been unzipped it'll walk through the unzipped folder
             }
         }
         if (path.endsWith(".svg") && !SVGPaths.includes(path)) {
@@ -38,6 +40,7 @@ async function findSVGs(path) {
     });
     //console.log(SVGPaths);
 }
+
 
 function getWalkSVGPaths() {
     return SVGPaths;

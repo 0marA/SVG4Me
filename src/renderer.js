@@ -49,7 +49,7 @@ async function updateHTML() {
         img.height = 200;
         path.innerText = SVGPaths[i];
         img.style.position = "relative";
-        img.style.left = "100px";
+        img.style.left = "150px";
         SVGsElement.appendChild(img);
         SVGsElement.appendChild(path);
     }
