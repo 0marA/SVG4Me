@@ -1,3 +1,15 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 92vh;
+    width: 92vw;
+}
+
 .buttons {
     background-color: #ffe7e7;
     background-position: 0 0;
@@ -9,8 +21,6 @@
     font-size: 1rem;
     font-weight: 700;
     line-height: 33.4929px;
-    list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg)
-        none;
     padding: 2px 12px;
     text-align: left;
     text-decoration: none;

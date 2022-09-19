@@ -1,7 +1,7 @@
 const openFolderButton = document.getElementById("open-folder");
 const refreshButton = document.getElementById("refresh-page");
 const folderPathElement = document.getElementById("folderpath");
-const dropZone = document.getElementById("dropzone");
+const dropZone = document.getElementById("body");
 const SVGsElement = document.getElementById("SVGs");
 
 let mainFolderPath = ""; // The root directory of the SVG files
